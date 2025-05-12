@@ -43,7 +43,7 @@ end
 
 function Callback_fn()
 	-- Run ktrans
-	local bufname = vim.api.nvim_buf_get_name(0)
+	local bufname = vim.api.nvim_buf_get_name(0):lower()
 	if string.find(bufname, ".th.kl") then
 		do
 			return
