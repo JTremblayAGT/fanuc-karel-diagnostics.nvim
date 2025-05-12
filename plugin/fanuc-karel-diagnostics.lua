@@ -43,7 +43,7 @@ end
 
 function Callback_fn()
 	-- Run ktrans
-	local bufname = vim.api.nvim_buf_get_name(0):lower()
+	local bufname = vim.api.nvim_buf_get_name(0)
 	if string.find(bufname, ".th.kl") then
 		do
 			return
@@ -55,7 +55,7 @@ function Callback_fn()
 		end
 	end
 	run_ktrans(bufname, function(d)
-		local filename = vim.fn.fnamemodify(bufname, ":t")
+		local filename = vim.fn.fnamemodify(bufname:lower(), ":t")
 		os.remove(string.gsub(filename, ".kl", ".pc"))
 		-- Parse output
 		local diag = parse_result(d)
